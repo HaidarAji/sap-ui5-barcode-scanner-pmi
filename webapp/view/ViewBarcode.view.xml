@@ -55,5 +55,18 @@
                 </content>
             </Panel>
         </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer/>
+                    <Button text="Update"
+                        type="Emphasized"
+                        press="onUpdatePress"/>
+                    <Button text="Close"
+                        type="Reject"
+                        press="onClosePress"/>   
+                </content>
+            </Toolbar>
+        </footer>
     </Page>
 </mvc:View>

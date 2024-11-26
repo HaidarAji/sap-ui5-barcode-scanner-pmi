@@ -29,6 +29,17 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+            },
+
+            getContentDensityClass: function () {
+                if (!this._sContentDensityClass) {
+                    if (Device.support.touch) {
+                        this._sContentDensityClass = "sapUiSizeCozy";
+                    } else {
+                        this._sContentDensityClass = "sapUiSizeCompact";
+                    }
+                }
+                return this._sContentDensityClass;
             }
         });
     }
