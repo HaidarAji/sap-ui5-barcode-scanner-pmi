@@ -15,7 +15,6 @@
                         <f:toolbar>
                             <Toolbar >
                                 <content>
-                                    <ToolbarSpacer/>
                                     <ndc:BarcodeScannerButton
                                         id="barcodeScannerButton"
                                         scanSuccess="onScanSuccess"
@@ -41,7 +40,10 @@
                             <Label text="Plant"/>
                             <Input editable="false" value=""/>
                             <Label text="Location"/>
-                            <Input editable="true" value=""/>
+                            <ComboBox id="location"
+                                items="{_Location}">
+                                <core:Item key="{key}" text="{text}"/>
+                            </ComboBox>
                             <Label text="Room"/>
                             <Input editable="true" value=""/>
                             <Label text="Last Inventory on"/>
@@ -49,7 +51,7 @@
                             <Label text="Asset serial"/>
                             <Input editable="false" value=""/>
                             <Label text="Inventory note"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="true" value=""/>
                         </f:content>
                     </f:SimpleForm>
                 </content>
