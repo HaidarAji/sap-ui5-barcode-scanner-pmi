@@ -12,10 +12,20 @@
                 expanded="{device>/system/desktop}">
                 <content>
                     <f:SimpleForm layout="ColumnLayout" editable="true">
+                    <f:content>
+                    <core:Title text="Input"/>
+                        <Label text="Default Location"/>
+                        <ComboBox id="defLoc"
+                        items="{_defLoc}">
+                        <core:Item key="{Key}" t        ext="{text}"/>
+
+                    </f:content>
+                </f:SimpleForm>
+                </ComboBox>                
+                    <f:SimpleForm layout="ColumnLayout" editable="true">
                         <f:toolbar>
                             <Toolbar >
                                 <content>
-                                    <ToolbarSpacer/>
                                     <ndc:BarcodeScannerButton
                                         id="barcodeScannerButton"
                                         scanSuccess="onScanSuccess"
@@ -41,7 +51,7 @@
                             <Label text="Plant"/>
                             <Input editable="false" value=""/>
                             <Label text="Location"/>
-                            <Input editable="true" value=""/>
+                            <Input editable="false" value=""/>                            
                             <Label text="Room"/>
                             <Input editable="true" value=""/>
                             <Label text="Last Inventory on"/>
@@ -49,7 +59,7 @@
                             <Label text="Asset serial"/>
                             <Input editable="false" value=""/>
                             <Label text="Inventory note"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="true" value=""/>
                         </f:content>
                     </f:SimpleForm>
                 </content>

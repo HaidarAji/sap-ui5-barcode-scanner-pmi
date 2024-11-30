@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGXXS_SCAN_BARCODE_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="LOCATION" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Stand"/>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Ktext"/>
+                </Key>
+                <Property Name="Stand" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant"/>
+                <Property Name="Ktext" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Text, 40 Characters Long"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Message text"/>
+            </EntityType>
+            <EntityType Name="Header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BarcodeId"/>
+                </Key>
+                <Property Name="BarcodeId" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Barcode ID"/>
+                <Property Name="Stort" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Location"/>
+                <Property Name="Bukrs" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Company Code"/>
+                <Property Name="Raumn" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Room"/>
+                <Property Name="Anln1" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Asset"/>
+                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant"/>
+                <Property Name="Anln2" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Subnumber"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Message text"/>
+                <Property Name="Txt50" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Description"/>
+                <Property Name="Kostl" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Cost Center"/>
+                <Property Name="Ivdat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Last inventory"/>
+                <Property Name="Sernr" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Serial number"/>
+                <Property Name="Invzu" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Inventory note"/>
+                <NavigationProperty Name="NavAssetToLocation" Relationship="ZGXXS_SCAN_BARCODE_SRV.HeaderToLocation" FromRole="FromRole_HeaderToLocation" ToRole="ToRole_HeaderToLocation"/>
+            </EntityType>
+            <Association Name="HeaderToLocation" sap:content-version="1">
+                <End Type="ZGXXS_SCAN_BARCODE_SRV.Header" Multiplicity="1" Role="FromRole_HeaderToLocation"/>
+                <End Type="ZGXXS_SCAN_BARCODE_SRV.LOCATION" Multiplicity="*" Role="ToRole_HeaderToLocation"/>
+            </Association>
+            <EntityContainer Name="ZGXXS_SCAN_BARCODE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="LOCATIONSet" EntityType="ZGXXS_SCAN_BARCODE_SRV.LOCATION" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="HeaderSet" EntityType="ZGXXS_SCAN_BARCODE_SRV.Header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="HeaderToLocationSet" Association="ZGXXS_SCAN_BARCODE_SRV.HeaderToLocation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="HeaderSet" Role="FromRole_HeaderToLocation"/>
+                    <End EntitySet="LOCATIONSet" Role="ToRole_HeaderToLocation"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://sap-wcd:4400/sap/opu/odata/sap/ZGXXS_SCAN_BARCODE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://sap-wcd:4400/sap/opu/odata/sap/ZGXXS_SCAN_BARCODE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
