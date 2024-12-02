@@ -41,13 +41,17 @@
                             <Input editable="false" value="{barcode>/Plant}"/>
                             <Label text="Location"/>
                             <ComboBox id="location"
-                                items="{_Location}">
-                                <core:Item key="{key}" text="{text}"/>
+                                items="{
+                                    path: 'barcode>/_Location',
+                                    sorter: { path: 'text'}}">
+                                <core:ListItem key="{key}" text="{/Id}"/>
                             </ComboBox>
                             <Label text="Room"/>
                             <Input editable="true" value="{barcode>/Room}"/>
                             <Label text="Last Inventory on"/>
-                            <Input editable="false" value="{barcode>/LastInventoryOn}"/>
+                            <Input editable="false" 
+                                type="Date"
+                                value="{barcode>/LastInventoryOn}"/>
                             <Label text="Asset serial"/>
                             <Input editable="false" value="{barcode>/AssetSerial}"/>
                             <Label text="Inventory note"/>
