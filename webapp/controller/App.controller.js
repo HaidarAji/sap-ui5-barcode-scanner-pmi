@@ -7,6 +7,7 @@ sap.ui.define(
   
       return BaseController.extend("zbarcodescan.controller.App", {
         onInit: function() {
+          this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
         }
       });
     }

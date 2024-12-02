@@ -28,32 +28,41 @@
                         <f:content>
                             <core:Title text="Data"/>
                             <Label text="Number"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="false" value="{barcode>/Number}"/>
                             <Label text="Asset Number"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="false" value="{barcode>/AssetNumber}"/>
                             <Label text="Asset Sub-Number"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="false" value="{barcode>/AssetSubNumber}"/>
                             <Label text="Asset Description"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="false" value="{barcode>/AssetDescription}"/>
                             <Label text="Cost Center"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="false" value="{barcode>/CostCenter}"/>
                             <Label text="Plant"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="false" value="{barcode>/Plant}"/>
                             <Label text="Location"/>
                             <ComboBox id="location"
                                 items="{_Location}">
                                 <core:Item key="{key}" text="{text}"/>
                             </ComboBox>
                             <Label text="Room"/>
-                            <Input editable="true" value=""/>
+                            <Input editable="true" value="{barcode>/Room}"/>
                             <Label text="Last Inventory on"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="false" value="{barcode>/LastInventoryOn}"/>
                             <Label text="Asset serial"/>
-                            <Input editable="false" value=""/>
+                            <Input editable="false" value="{barcode>/AssetSerial}"/>
                             <Label text="Inventory note"/>
-                            <Input editable="true" value=""/>
+                            <Input editable="true" value="{barcode>/InventoryNote}"/>
                         </f:content>
                     </f:SimpleForm>
+                    <List items="{/Barcode}"
+                        growing="true"
+                        growingThreshold="5">
+                        <items>
+                            <StandardListItem 
+                                title="{AssetNumber}"
+                                description="{AssetDescription}"/>
+                        </items>
+                    </List>
                 </content>
             </Panel>
         </content>
