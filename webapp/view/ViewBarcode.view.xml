@@ -11,17 +11,17 @@
                 expandable="{= !${device>/system/desktop} }"
                 expanded="{device>/system/desktop}">
                 <content>
-                    <f:SimpleForm layout="ColumnLayout" editable="true">
+                <f:SimpleForm layout="ColumnLayout" editable="true">
                     <f:content>
                     <core:Title text="Input"/>
                         <Label text="Default Location"/>
                         <ComboBox id="defLoc"
                         items="{_defLoc}">
-                        <core:Item key="{Key}" t        ext="{text}"/>
-
+                        <core:Item key="{Key}" text="{text}"/>
+                        </ComboBox>
                     </f:content>
                 </f:SimpleForm>
-                </ComboBox>                
+                                
                     <f:SimpleForm layout="ColumnLayout" editable="true">
                         <f:toolbar>
                             <Toolbar >
