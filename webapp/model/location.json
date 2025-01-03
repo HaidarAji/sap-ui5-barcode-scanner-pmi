@@ -1,0 +1,24 @@
+{
+    "Location": [
+        { "Num": 1, "Plant": "DE01", "Id": "PA-XY" },
+        { "Num": 2, "Plant": "DE01", "Id": "0002" },
+        { "Num": 3, "Plant": "DE01", "Id": "AM-BC" },
+        { "Num": 4, "Plant": "DE01", "Id": "PA-HG" },
+        { "Num": 5, "Plant": "DE01", "Id": "PA-LM" },
+        { "Num": 1, "Plant": "DE02", "Id": "PA-ZY" },
+        { "Num": 2, "Plant": "DE02", "Id": "0003" },
+        { "Num": 3, "Plant": "DE02", "Id": "AM-XY" },
+        { "Num": 4, "Plant": "DE02", "Id": "PA-HJ" },
+        { "Num": 5, "Plant": "DE02", "Id": "PA-LN" },
+        { "Num": 1, "Plant": "DE03", "Id": "PA-WX" },
+        { "Num": 2, "Plant": "DE03", "Id": "0004" },
+        { "Num": 3, "Plant": "DE03", "Id": "AM-YZ" },
+        { "Num": 4, "Plant": "DE03", "Id": "PA-HK" },
+        { "Num": 5, "Plant": "DE03", "Id": "PA-LO" },
+        { "Num": 1, "Plant": "DE04", "Id": "PA-VW" },
+        { "Num": 2, "Plant": "DE04", "Id": "0005" },
+        { "Num": 3, "Plant": "DE04", "Id": "AM-ZX" },
+        { "Num": 4, "Plant": "DE04", "Id": "PA-HL" },
+        { "Num": 5, "Plant": "DE04", "Id": "PA-LP" }
+    ]
+}

@@ -68,6 +68,14 @@
         "settings": {
           "bundleName": "zbarcodescan.i18n.i18n"
         }
+      },
+      "barcode": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/data.json"
+      },
+      "location": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/location.json"
       }
     },
     "resources": {

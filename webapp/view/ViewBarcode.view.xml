@@ -42,9 +42,8 @@
                             <Label text="Location"/>
                             <ComboBox id="location"
                                 items="{
-                                    path: 'barcode>/_Location',
-                                    sorter: { path: 'text'}}">
-                                <core:ListItem key="{key}" text="{/Id}"/>
+                                path: 'location>/Location' }">
+                                <core:ListItem key="{location>Plant}" text="{location>Id}"/>
                             </ComboBox>
                             <Label text="Room"/>
                             <Input editable="true" value="{barcode>/Room}"/>

@@ -18,12 +18,14 @@ function (Controller, JSONModel) {
        return data;
     }
 
-    const oModel = new JSONModel();
+    // const oModel = new JSONModel();
+    // const oLocModel = new JSONModel();
     let prefixId;
 
     return Controller.extend("zbarcodescan.controller.ViewBarcode", {
         onInit: function () {
-            this.getView().setModel(oModel, "barcode");
+            //this.getView().setModel(oModel, "barcode");
+            //this.getView().setModel(oLocModel, "location");
             prefixId = this.createId();
             console.log(prefixId);
             if (prefixId){
@@ -45,9 +47,17 @@ function (Controller, JSONModel) {
                     fetch('/model/data.json')
                         .then(response => response.json())
                         .then(data => {
-                            console.log(data);
                             const item = data.Barcode.find(barcode => barcode.Number === barcodeNum);
-                            oModel.setData(item);
+                            if (item) {
+                                const locationData = {
+                                    Location : item._Location
+                                };   
+                                this.getView().getModel("barcode").setData(item);
+                                this.getView().getModel("location").setData(locationData);
+                                console.log(locationData);
+                            }
+                            
+
                         })
                     // console.log(oData);
                     // const item = oData.Barcode.find(barcode => barcode.Number === barcodeNum);

@@ -8,14 +8,14 @@
           "CostCenter": "1007565012",
           "Plant": "DE01",
           "_Location": [
-            { "Plant": "DE01", "Id": "PA-XY" },
-            { "Plant": "DE01", "Id": "0002" },
-            { "Plant": "DE01", "Id": "AM-BC" },
-            { "Plant": "DE01", "Id": "PA-HG" },
-            { "Plant": "DE01", "Id": "PA-LM" }
+            { "Num": 1, "Plant": "DE01", "Id": "PA-XY" },
+            { "Num": 2, "Plant": "DE01", "Id": "0002" },
+            { "Num": 3, "Plant": "DE01", "Id": "AM-BC" },
+            { "Num": 4, "Plant": "DE01", "Id": "PA-HG" },
+            { "Num": 5, "Plant": "DE01", "Id": "PA-LM" }
           ],
           "Room": "KOMODO",
-          "LastInventoryOn": "/Date(1701350623000)/",
+          "LastInventoryOn": "2024-12-23",
           "AssetSerial": "123312",
           "InventoryNote": "Updated note 1"
         },
@@ -27,11 +27,11 @@
           "CostCenter": "1007565013",
           "Plant": "DE02",
           "_Location": [
-            { "Plant": "DE02", "Id": "PA-ZY" },
-            { "Plant": "DE02", "Id": "0003" },
-            { "Plant": "DE02", "Id": "AM-XY" },
-            { "Plant": "DE02", "Id": "PA-HJ" },
-            { "Plant": "DE02", "Id": "PA-LN" }
+            { "Num": 1, "Plant": "DE02", "Id": "PA-ZY" },
+            { "Num": 2, "Plant": "DE02", "Id": "0003" },
+            { "Num": 3, "Plant": "DE02", "Id": "AM-XY" },
+            { "Num": 4, "Plant": "DE02", "Id": "PA-HJ" },
+            { "Num": 5, "Plant": "DE02", "Id": "PA-LN" }
           ],
           "Room": "BALI",
           "LastInventoryOn": "/Date(1701350623000)/",
@@ -46,11 +46,11 @@
           "CostCenter": "1007565014",
           "Plant": "DE03",
           "_Location": [
-            { "Plant": "DE03", "Id": "PA-WX" },
-            { "Plant": "DE03", "Id": "0004" },
-            { "Plant": "DE03", "Id": "AM-YZ" },
-            { "Plant": "DE03", "Id": "PA-HK" },
-            { "Plant": "DE03", "Id": "PA-LO" }
+            { "Num": 1, "Plant": "DE03", "Id": "PA-WX" },
+            { "Num": 2, "Plant": "DE03", "Id": "0004" },
+            { "Num": 3, "Plant": "DE03", "Id": "AM-YZ" },
+            { "Num": 4, "Plant": "DE03", "Id": "PA-HK" },
+            { "Num": 5, "Plant": "DE03", "Id": "PA-LO" }
           ],
           "Room": "SUMBA",
           "LastInventoryOn": "/Date(1701350623000)/",
@@ -65,11 +65,11 @@
           "CostCenter": "1007565015",
           "Plant": "DE04",
           "_Location": [
-            { "Plant": "DE04", "Id": "PA-VW" },
-            { "Plant": "DE04", "Id": "0005" },
-            { "Plant": "DE04", "Id": "AM-ZX" },
-            { "Plant": "DE04", "Id": "PA-HL" },
-            { "Plant": "DE04", "Id": "PA-LP" }
+            { "Num": 1, "Plant": "DE04", "Id": "PA-VW" },
+            { "Num": 2, "Plant": "DE04", "Id": "0005" },
+            { "Num": 3, "Plant": "DE04", "Id": "AM-ZX" },
+            { "Num": 4, "Plant": "DE04", "Id": "PA-HL" },
+            { "Num": 5, "Plant": "DE04", "Id": "PA-LP" }
           ],
           "Room": "LOMBOK",
           "LastInventoryOn": "/Date(1701350623000)/",
@@ -84,11 +84,11 @@
           "CostCenter": "1007565016",
           "Plant": "DE05",
           "_Location": [
-            { "Plant": "DE05", "Id": "PA-UV" },
-            { "Plant": "DE05", "Id": "0006" },
-            { "Plant": "DE05", "Id": "AM-WY" },
-            { "Plant": "DE05", "Id": "PA-HM" },
-            { "Plant": "DE05", "Id": "PA-LQ" }
+            { "Num": 1, "Plant": "DE05", "Id": "PA-UV" },
+            { "Num": 2, "Plant": "DE05", "Id": "0006" },
+            { "Num": 3, "Plant": "DE05", "Id": "AM-WY" },
+            { "Num": 4, "Plant": "DE05", "Id": "PA-HM" },
+            { "Num": 5, "Plant": "DE05", "Id": "PA-LQ" }
           ],
           "Room": "JAVA",
           "LastInventoryOn": "/Date(1701350623000)/",
@@ -103,11 +103,11 @@
           "CostCenter": "1007565017",
           "Plant": "DE06",
           "_Location": [
-            { "Plant": "DE06", "Id": "PA-TU" },
-            { "Plant": "DE06", "Id": "0007" },
-            { "Plant": "DE06", "Id": "AM-VX" },
-            { "Plant": "DE06", "Id": "PA-HN" },
-            { "Plant": "DE06", "Id": "PA-LR" }
+            { "Num": 1, "Plant": "DE06", "Id": "PA-TU" },
+            { "Num": 2, "Plant": "DE06", "Id": "0007" },
+            { "Num": 3, "Plant": "DE06", "Id": "AM-VX" },
+            { "Num": 4, "Plant": "DE06", "Id": "PA-HN" },
+            { "Num": 5, "Plant": "DE06", "Id": "PA-LR" }
           ],
           "Room": "SUMATRA",
           "LastInventoryOn": "/Date(1701350623000)/",
@@ -122,11 +122,11 @@
           "CostCenter": "1007565018",
           "Plant": "DE07",
           "_Location": [
-            { "Plant": "DE07", "Id": "PA-SU" },
-            { "Plant": "DE07", "Id": "0008" },
-            { "Plant": "DE07", "Id": "AM-UX" },
-            { "Plant": "DE07", "Id": "PA-HO" },
-            { "Plant": "DE07", "Id": "PA-LS" }
+            { "Num": 1, "Plant": "DE07", "Id": "PA-SU" },
+            { "Num": 2, "Plant": "DE07", "Id": "0008" },
+            { "Num": 3, "Plant": "DE07", "Id": "AM-UX" },
+            { "Num": 4, "Plant": "DE07", "Id": "PA-HO" },
+            { "Num": 5, "Plant": "DE07", "Id": "PA-LS" }
           ],
           "Room": "KALIMANTAN",
           "LastInventoryOn": "/Date(1701350623000)/",
@@ -141,11 +141,11 @@
           "CostCenter": "1007565019",
           "Plant": "DE08",
           "_Location": [
-            { "Plant": "DE08", "Id": "PA-RS" },
-            { "Plant": "DE08", "Id": "0009" },
-            { "Plant": "DE08", "Id": "AM-TX" },
-            { "Plant": "DE08", "Id": "PA-HP" },
-            { "Plant": "DE08", "Id": "PA-LT" }
+            { "Num": 1, "Plant": "DE08", "Id": "PA-RS" },
+            { "Num": 2, "Plant": "DE08", "Id": "0009" },
+            { "Num": 3, "Plant": "DE08", "Id": "AM-TX" },
+            { "Num": 4, "Plant": "DE08", "Id": "PA-HP" },
+            { "Num": 5, "Plant": "DE08", "Id": "PA-LT" }
           ],
           "Room": "SULAWESI",
           "LastInventoryOn": "/Date(1701350623000)/",
@@ -160,11 +160,11 @@
           "CostCenter": "1007565020",
           "Plant": "DE09",
           "_Location": [
-            { "Plant": "DE09", "Id": "PA-QT" },
-            { "Plant": "DE09", "Id": "0010" },
-            { "Plant": "DE09", "Id": "AM-SX" },
-            { "Plant": "DE09", "Id": "PA-HQ" },
-            { "Plant": "DE09", "Id": "PA-LU" }
+            { "Num": 1, "Plant": "DE09", "Id": "PA-QT" },
+            { "Num": 2, "Plant": "DE09", "Id": "0010" },
+            { "Num": 3, "Plant": "DE09", "Id": "AM-SX" },
+            { "Num": 4, "Plant": "DE09", "Id": "PA-HQ" },
+            { "Num": 5, "Plant": "DE09", "Id": "PA-LU" }
           ],
           "Room": "PAPUA",
           "LastInventoryOn": "/Date(1701350623000)/",
