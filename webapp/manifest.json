@@ -26,7 +26,7 @@
                         "additionalParameters": "allowed"
                     }
                 }
-            }
+            } 
         },
         "dataSources": {
             "ZGXXS_SCAN_BARCODE_SRV": {
@@ -37,7 +37,7 @@
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "2.0"
                 }
-            }
+            }            
         }
     },
     "sap.ui": {
@@ -87,6 +87,34 @@
                         "sap-value-list": "none"
                     }
                 }
+            },
+            
+            "locationModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": false
+                },
+                "dataSource": "ZGXXS_SCAN_BARCODE_SRV"
+            },
+            "headerModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": false
+                },
+                "dataSource": "ZGXXS_SCAN_BARCODE_SRV"
+            },
+            "plantModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": false
+                },
+                "dataSource": "ZGXXS_SCAN_BARCODE_SRV"
             }
         },
         "resources": {

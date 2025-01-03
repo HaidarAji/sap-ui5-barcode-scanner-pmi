@@ -11,17 +11,39 @@
                 expandable="{= !${device>/system/desktop} }"
                 expanded="{device>/system/desktop}">
                 <content>
-                <f:SimpleForm layout="ColumnLayout" editable="true">
-                    <f:content>
-                    <core:Title text="Input"/>
-                        <Label text="Default Location"/>
-                        <ComboBox id="defLoc"
-                        items="{_defLoc}">
-                        <core:Item key="{Key}" text="{text}"/>
-                        </ComboBox>
-                    </f:content>
-                </f:SimpleForm>
-                                
+                    <f:SimpleForm layout="ColumnLayout" editable="true">
+                        <f:content>
+                        <core:Title text="Input"/>    
+                            <Label text="Default Plant"/>
+                            <ComboBox id="defPlant"
+                            selectedKey="{view>/selectedPlant}"
+                            showSecondaryValues="true"
+                            selectionChange="onPlantChange"
+                            items="{
+                                path: 'plant>/'}">
+                            <core:ListItem
+                                key="{plant>Werks}"
+                                text="{plant>Name1}"
+                                additionalText="{plant>Werks}"/>
+                            </ComboBox>                        
+                            <Label text="Default Location"/>
+                            <ComboBox id="defLoc"
+                            selectedKey="{view>/selectedLocation}"
+                            selectionChange="onLocationChange"
+                            showSecondaryValues="true"
+                            items="{
+                                path: 'filteredLocations>/'}">
+                            <core:ListItem 
+                                key="{filteredLocations>Stand}" 
+                                text="{filteredLocations>Ktext}"
+                                additionalText="{filteredLocations>Stand}"/>
+                            </ComboBox>
+                            <Label text="Default Room"/>
+                            <Input id="defRoom"
+                                liveChange="onRoomChange"                                
+                                editable="true" value=""/>
+                        </f:content>
+                    </f:SimpleForm>                                
                     <f:SimpleForm layout="ColumnLayout" editable="true">
                         <f:toolbar>
                             <Toolbar >
@@ -32,34 +54,36 @@
                                         scanFail="onScanError"
                                         inputLiveUpdate="onScanLiveupdate"
                                         dialogTitle="Barcode Scanner Button" 
-                                    />
+                                    />                                    
                                 </content>
                             </Toolbar>
                         </f:toolbar>
                         <f:content>
                             <core:Title text="Data"/>
                             <Label text="Number"/>
-                            <Input editable="false" value=""/>
+                            <Input id="barcodeID" editable="false" value=""/>
                             <Label text="Asset Number"/>
-                            <Input editable="false" value=""/>
+                            <Input id="assetNo" editable="false" value="{header>/Anln1}"/>
                             <Label text="Asset Sub-Number"/>
-                            <Input editable="false" value=""/>
+                            <Input id="assetSubNo" editable="false" value="{header>/Anln2}"/>
                             <Label text="Asset Description"/>
-                            <Input editable="false" value=""/>
+                            <Input id="assetDesc" editable="false" value="{header>/Txt50}"/>
                             <Label text="Cost Center"/>
-                            <Input editable="false" value=""/>
+                            <Input id="costCenter" editable="false" value="{header>/Kostl}"/>
                             <Label text="Plant"/>
-                            <Input editable="false" value=""/>
+                            <Input id="plant" editable="false" value="{header>/Name1}"/>
                             <Label text="Location"/>
-                            <Input editable="false" value=""/>                            
+                            <Input id="location" editable="false" value="{header>/Ktext}"/>                            
                             <Label text="Room"/>
-                            <Input editable="true" value=""/>
+                            <Input id="room" editable="false" value="{header>/Raumn}"/>
                             <Label text="Last Inventory on"/>
-                            <Input editable="false" value=""/>
+                            <Input id="inventDate" editable="false" value="{header>/Ivdat}"/>
                             <Label text="Asset serial"/>
-                            <Input editable="false" value=""/>
+                            <Input id="serialNo" editable="false" value="{header>/Sernr}"/>
                             <Label text="Inventory note"/>
-                            <Input editable="true" value=""/>
+                            <Input id="invNote" editable="true" value="{header>/Invzu}"/>
+                            <Label text=""/>
+                            <Text id="assetText" text="" />
                         </f:content>
                     </f:SimpleForm>
                 </content>

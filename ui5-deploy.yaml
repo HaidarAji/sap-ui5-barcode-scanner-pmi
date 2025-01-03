@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zbarcodescan
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: WCD300
+          url: http://sap-wcd:4400
+          client: '300'
+        app:
+          name: ZGXXS_SCAN_AIS
+          description: Barcode Scanner AIS V1.0
+          package: ZG00-ENH-FIN
+          transport: WCDK9F22ML
+        exclude:
+          - /test/
