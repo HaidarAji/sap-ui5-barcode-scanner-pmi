@@ -159,12 +159,19 @@ function (Controller, MessageToast, JSONModel) {
                             // Bind the header data to the view
                             oView.setModel(oHeader, "header");                                                                      
                             
-                            //set oData to oDataGlobal
-                            oDataGlobal = oData;
-                            
-                            this.onCompare(oData);
+                            if (oData.Anln1 === "") {
+                                this.getView().byId("assetText").setText(oData.Message);
 
-                        MessageToast.show("Asset Fetched Successfully");
+                                MessageToast.show("Asset Number not Valid");
+                            }else {
+                                //set oData to oDataGlobal
+                                oDataGlobal = oData;
+                                
+                                this.onCompare(oData);
+
+                                MessageToast.show("Asset Fetched Successfully");
+                            };        
+
                         //this.getView().setBusy(false);
                     }.bind(this),
 
@@ -176,10 +183,15 @@ function (Controller, MessageToast, JSONModel) {
                     }
                     });             
                     
-
+                }else {
+                    var oView = this.getView();
+                    var oHeader = new JSONModel();
+                    oView.setModel(oHeader, "header");
+                    this.getView().byId("assetText").setText("");
+                    MessageToast.show("Invalid BarcodeID Length");                                 
                 }              
             }else {
-                oScanResultText.setValue('');
+                oScanResultText.setValue('');                
                 //boxVal(this, undefined);
                 //this.getView().byId("textMessageId").setText('');
             }
