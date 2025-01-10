@@ -79,7 +79,24 @@ function (Controller, MessageToast, JSONModel) {
                     MessageToast.show("Plant load successfully");
                 },
                 error: function (oError) {
-                    MessageToast.show("Failed to fetch locations");
+                    var sMessage;
+
+                    //check if responseText exists
+                    if (oError.responseText) {
+                        try {
+                            // Parse the responseText to extract the message
+                            var oResponse = JSON.parse(oError.responseText);
+                            sMessage = oResponse.error.message.value;
+                        } catch(e) {
+                            //Fallback to plain text if parsing fails
+                            sMessage = oError.responseText;
+                        }
+                    }else {
+                        //Fallback if no responseText is present
+                        sMessage = oError.message || "Unknown error Occured.";
+                    }
+                    //Display the error message
+                    MessageToast.show(sMessage);
                     console.error("Error fetching Location Set:", oError);
                 }
             });
@@ -101,7 +118,24 @@ function (Controller, MessageToast, JSONModel) {
 
                 },
                 error: function (oError) {
-                    MessageToast.show("Failed to fetch locations");
+                    var sMessage;
+
+                    //check if responseText exists
+                    if (oError.responseText) {
+                        try {
+                            // Parse the responseText to extract the message
+                            var oResponse = JSON.parse(oError.responseText);
+                            sMessage = oResponse.error.message.value;
+                        } catch(e) {
+                            //Fallback to plain text if parsing fails
+                            sMessage = oError.responseText;
+                        }
+                    }else {
+                        //Fallback if no responseText is present
+                        sMessage = oError.message || "Unknown error Occured.";
+                    }
+                    //Display the error message
+                    MessageToast.show(sMessage);
                     console.error("Error fetching Location Set:", oError);
                 }
             });
@@ -175,12 +209,29 @@ function (Controller, MessageToast, JSONModel) {
                         //this.getView().setBusy(false);
                     }.bind(this),
 
-                    Error: function(oError) {
-                        this.getView().byId("assetText").setText("Error Fetching Data");
-                        MessageToast.show("Failed to Fetch Data");
-                        console.error("Error:", oError);
-                        //this.getView().setBusy(false);
-                    }
+                    Error: function(oError) {                       
+                        var sMessage;
+
+                        //check if responseText exists
+                        if (oError.responseText) {
+                            try {
+                                // Parse the responseText to extract the message
+                                var oResponse = JSON.parse(oError.responseText);
+                                sMessage = oResponse.error.message.value;
+                            } catch(e) {
+                                //Fallback to plain text if parsing fails
+                                sMessage = oError.responseText;
+                            }
+                        }else {
+                            //Fallback if no responseText is present
+                            sMessage = oError.message || "Unknown error Occured.";
+                        }
+                            //Display the error message
+                            MessageToast.show(sMessage);
+                            this.getView().byId("assetText").setText(sMessage);
+                            console.error("Error:", oError);
+                            //this.getView().setBusy(false);
+                        }
                     });             
                     
                 }else {
@@ -191,9 +242,7 @@ function (Controller, MessageToast, JSONModel) {
                     MessageToast.show("Invalid BarcodeID Length");                                 
                 }              
             }else {
-                oScanResultText.setValue('');                
-                //boxVal(this, undefined);
-                //this.getView().byId("textMessageId").setText('');
+                oScanResultText.setValue('');                                
             }
              
           },
@@ -218,8 +267,7 @@ function (Controller, MessageToast, JSONModel) {
                     this.getView().byId("assetText").setText("Default Location and Room Different from Current location");
                 } else {
                     this.getView().byId("assetText").setText("Default Location Different from Current location");
-                };
-                
+                };               
             } else {
                 if ( aCurrRoomData !== aDefRoom ) {
                     this.getView().byId("assetText").setText("Default Room Different from Current location");
@@ -271,7 +319,24 @@ function (Controller, MessageToast, JSONModel) {
                     MessageToast.show("Asset updated successfully");
                 },
                 error: function (oError) {
-                    MessageToast.show("Failed to update Asset");
+                    var sMessage;
+
+                    //check if responseText exists
+                    if (oError.responseText) {
+                        try {
+                            // Parse the responseText to extract the message
+                            var oResponse = JSON.parse(oError.responseText);
+                            sMessage = oResponse.error.message.value;
+                        } catch(e) {
+                            //Fallback to plain text if parsing fails
+                            sMessage = oError.responseText;
+                        }
+                    }else {
+                        //Fallback if no responseText is present
+                        sMessage = oError.message || "Unknown error Occured.";
+                    }
+                    //Display the error message
+                    MessageToast.show(sMessage);                    
                     console.log("Update error:", oError);
                 }
             });
