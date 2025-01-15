@@ -7,9 +7,7 @@
     <Page id="page" title="{i18n>title}">
         <content>
             <Panel headerText="Barcode Scanner"
-                class="sapUiResponsiveMargin sapUiHideOnPhone"
-                expandable="{= !${device>/system/desktop} }"
-                expanded="{device>/system/desktop}">
+                class="sapUiResponsiveMargin" width="auto">
                 <content>
                     <f:SimpleForm layout="ColumnLayout" editable="true">
                         <f:content>
