@@ -18,8 +18,8 @@ builder:
           url: http://sap-wcd:4400
           client: '300'
         app:
-          name: ZGXXA_UI_AISSCN
-          description: Barcode Scan v1.1
+          name: ZGXXS_SCAN_AIS
+          description: Barcode Scan 1.2
           package: ZG00-ENH-FIN
           transport: WCDK9F22ML
         exclude:
