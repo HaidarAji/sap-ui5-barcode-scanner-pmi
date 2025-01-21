@@ -66,6 +66,7 @@ function (Controller, MessageToast, JSONModel) {
         fetchPlant: function() {
             var oModel = this.getOwnerComponent().getModel("plantModel");
             var oView = this.getView();
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
 
             // Perform OData read Request
             oModel.read("/PlantSet", {
@@ -76,7 +77,8 @@ function (Controller, MessageToast, JSONModel) {
                     //Bind the plant data to the combobox
                     oView.setModel(oPlantModel, "plant");
                    
-                    MessageToast.show("Plant load successfully");
+                    var sPlntMsg = oBundle.getText("pnltMsgOk");
+                    MessageToast.show(sPlntMsg);
                 },
                 error: function (oError) {
                     var sMessage;
@@ -93,11 +95,13 @@ function (Controller, MessageToast, JSONModel) {
                         }
                     }else {
                         //Fallback if no responseText is present
-                        sMessage = oError.message || "Unknown error Occured.";
+                        var sUnkErr = oBundle.getText("unkErr");
+                        sMessage = oError.message || sUnkErr;
                     }
                     //Display the error message
                     MessageToast.show(sMessage);
-                    console.error("Error fetching Location Set:", oError);
+                    var sPlntErrMsg = oBundle.getText("plntErrMsg");
+                    console.error(sPlntErrMsg, oError);
                 }
             });
         },
@@ -105,6 +109,7 @@ function (Controller, MessageToast, JSONModel) {
         fetchLocation: function() {
             var oModel = this.getOwnerComponent().getModel("locationModel");
             var oView = this.getView();
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
 
             // Perform OData read request
             oModel.read("/LOCATIONSet", {
@@ -114,7 +119,8 @@ function (Controller, MessageToast, JSONModel) {
 
                     // Bind the location data to the ComboBox
                     oView.setModel(oLocationModel, "locations");
-                    MessageToast.show("Location load successfully");
+                    var sLocMsgOk = oBundle.getText("locMsgOk")
+                    MessageToast.show(sLocMsgOk);
 
                 },
                 error: function (oError) {
@@ -132,11 +138,13 @@ function (Controller, MessageToast, JSONModel) {
                         }
                     }else {
                         //Fallback if no responseText is present
-                        sMessage = oError.message || "Unknown error Occured.";
+                        var sUnkErr = oBundle.getText("unkErr");
+                        sMessage = oError.message || sUnkErr;                        
                     }
                     //Display the error message
                     MessageToast.show(sMessage);
-                    console.error("Error fetching Location Set:", oError);
+                    var sLocMsg = oBundle.getText("locErrMsg");
+                    console.error(sLocMsg, oError);                    
                 }
             });
         },
@@ -174,11 +182,10 @@ function (Controller, MessageToast, JSONModel) {
         onScanSuccess: function(oEvent){
             console.log(oEvent);
             console.log(this);
-            
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             if (oEvent.getParameter("text")){
                 oScanResultText.setValue(oEvent.getParameter("text"));  
-                if ((oEvent.getParameter("text")).length == 23){
-                    //this.getView().setBusy(true);
+                if ((oEvent.getParameter("text")).length == 23){                    
                     var idBarcode = this.getView().byId("barcodeID").getValue();
 
                     var oView = this.getView();
@@ -196,14 +203,16 @@ function (Controller, MessageToast, JSONModel) {
                             if (oData.Anln1 === "") {
                                 this.getView().byId("assetText").setText(oData.Message);
 
-                                MessageToast.show("Asset Number not Valid");
+                                var sInvalMsg = oBundle.getText("invalAsset");
+                                MessageToast.show(sInvalMsg);
                             }else {
                                 //set oData to oDataGlobal
                                 oDataGlobal = oData;
                                 
                                 this.onCompare(oData);
 
-                                MessageToast.show("Asset Fetched Successfully");
+                                var sOkMsg = oBundle.getText("okAsset");
+                                MessageToast.show(sOkMsg);
                             };        
 
                         //this.getView().setBusy(false);
@@ -224,7 +233,9 @@ function (Controller, MessageToast, JSONModel) {
                             }
                         }else {
                             //Fallback if no responseText is present
-                            sMessage = oError.message || "Unknown error Occured.";
+                            var sUnkErr = oBundle.getText("unkErr");
+                            sMessage = oError.message || sUnkErr;
+                            
                         }
                             //Display the error message
                             MessageToast.show(sMessage);
@@ -239,7 +250,9 @@ function (Controller, MessageToast, JSONModel) {
                     var oHeader = new JSONModel();
                     oView.setModel(oHeader, "header");
                     this.getView().byId("assetText").setText("");
-                    MessageToast.show("Invalid BarcodeID Length");                                 
+
+                    var sErrBarLength = oBundle.getText("errBarLength");
+                    MessageToast.show(sErrBarLength);                                 
                 }              
             }else {
                 oScanResultText.setValue('');                                
@@ -258,19 +271,23 @@ function (Controller, MessageToast, JSONModel) {
         onCompare: function(aResults) {
             var aDefLoc = this.getView().getModel("view").getProperty("/selectedLocation");
             var aDefRoom = this.getView().byId("defRoom").getValue();
-            
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+
             var aCurrLocData = aResults.Stort;
             var aCurrRoomData = aResults.Raumn;
           
             if ( aCurrLocData !== aDefLoc ) {
                 if ( aCurrRoomData !== aDefRoom ) {
-                    this.getView().byId("assetText").setText("Default Location and Room Different from Current location");
+                    var sDiffLocRoom = oBundle.getText("diffLocRoom");
+                    this.getView().byId("assetText").setText(sDiffLocRoom);
                 } else {
-                    this.getView().byId("assetText").setText("Default Location Different from Current location");
+                    var sDiffLoc = oBundle.getText("diffLoc");
+                    this.getView().byId("assetText").setText(sDiffLoc);
                 };               
             } else {
                 if ( aCurrRoomData !== aDefRoom ) {
-                    this.getView().byId("assetText").setText("Default Room Different from Current location");
+                    var sDiffRoom = oBundle.getText("diffRoom");
+                    this.getView().byId("assetText").setText(sDiffRoom);
                 } else {
                     this.getView().byId("assetText").setText("");
                 };                
@@ -288,6 +305,8 @@ function (Controller, MessageToast, JSONModel) {
             var aDefLoc = this.getView().getModel("view").getProperty("/selectedLocation");
             var aRoom = this.getView().byId("defRoom").getValue();
             var aNote = this.getView().byId("invNote").getValue();
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+
             oPayLoadData = {
                 BarcodeId: oDataGlobal.BarcodeId,  
                 Bukrs: oDataGlobal.Bukrs,              
@@ -304,7 +323,8 @@ function (Controller, MessageToast, JSONModel) {
             // Get oData model instance
             var oModelUpdate = this.getOwnerComponent().getModel("headerModel");
             if  (!oModelUpdate) {
-                console.log("oModelUpdate model is not available");
+                var sErrMdl = oBundle.getText("errOmdl");
+                console.log(sErrMdl);
                 return;
             }
 
@@ -316,7 +336,8 @@ function (Controller, MessageToast, JSONModel) {
             //Send the update request
             oModelUpdate.update(sPathUpdate, oPayLoadData, {
                 success: function () {
-                    MessageToast.show("Asset updated successfully");
+                    var sUpdOk = oBundle.getText("updOk");
+                    MessageToast.show(sUpdOk);
                 },
                 error: function (oError) {
                     var sMessage;
@@ -333,11 +354,14 @@ function (Controller, MessageToast, JSONModel) {
                         }
                     }else {
                         //Fallback if no responseText is present
-                        sMessage = oError.message || "Unknown error Occured.";
+                        var sUnkErr = oBundle.getText("unkErr");
+                        sMessage = oError.message || sUnkErr;
+                        
                     }
                     //Display the error message
-                    MessageToast.show(sMessage);                    
-                    console.log("Update error:", oError);
+                    MessageToast.show(sMessage); 
+                    var sUpdErr = oBundle.getText("updErr");                                         
+                    console.log(sUpdErr, oError);
                 }
             });
         },
