@@ -29,3 +29,9 @@ server:
       afterMiddleware: compression
       configuration:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        backend:
+          - path: /sap
+            url: http://sap-wcd:4400
+            client: '300'
+            destination: WCD300
+            authenticationType: BasicAuthentication
