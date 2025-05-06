@@ -36,6 +36,8 @@ function (Controller, MessageToast, JSONModel) {
            this.fetchPlant();
            //fetch Location data on initialization
            this.fetchLocation();
+           //fetch Room data on initialization
+           this.fetchRoom();
 
            // Initialize filtered Location model
            this.getView().setModel(new JSONModel([]), "filteredLocations");
@@ -147,6 +149,46 @@ function (Controller, MessageToast, JSONModel) {
                     console.error(sLocMsg, oError);                    
                 }
             });
+        },
+
+        fetchRoom: function(){
+           var oModel = this.getOwnerComponent().getModel("roomModel");
+           var oView = this.getView();
+           var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle(); 
+
+           //Perform oData read request
+           oModel.read("/RoomSet", {
+            success: function(oData) {
+                //Create eate JSON Model for the room data
+                var oRoomModel = new JSONModel(oData.results);
+
+                //Bind the room data to the combobox
+                oView.setModel(oRoomModel, "room");
+            },
+            error: function (oError) {
+                var sMessage;
+
+                //check if responseText exists
+                if (oError.responseText) {
+                    try {
+                        // Parse the responseText to extract the message
+                        var oResponse = JSON.parse(oError.responseText);
+                        sMessage = oResponse.error.message.value;
+                    } catch(e) {
+                        //Fallback to plain text if parsing fails
+                        sMessage = oError.responseText;
+                    }
+                }else {
+                    //Fallback if no responseText is present
+                    var sUnkErr = oBundle.getText("unkErr");
+                    sMessage = oError.message || sUnkErr;
+                }
+                //Display the error message
+                MessageToast.show(sMessage);
+                var sPlntErrMsg = oBundle.getText("roomErrMsg");
+                console.error(sPlntErrMsg, oError);
+            }
+           });
         },
 
         onPlantChange: function(oEvent) {

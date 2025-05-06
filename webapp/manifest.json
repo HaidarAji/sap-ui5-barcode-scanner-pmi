@@ -115,6 +115,15 @@
                     "useBatch": false
                 },
                 "dataSource": "ZGXXS_SCAN_BARCODE_SRV"
+            },
+            "roomModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": false
+                },
+                "dataSource": "ZGXXS_SCAN_BARCODE_SRV"
             }
         },
         "resources": {

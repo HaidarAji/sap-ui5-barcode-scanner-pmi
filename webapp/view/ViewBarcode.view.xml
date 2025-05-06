@@ -37,9 +37,17 @@
                                 additionalText="{filteredLocations>Stand}"/>
                             </ComboBox>
                             <Label text="Default Room"/>
-                            <Input id="defRoom"
-                                liveChange="onRoomChange"                                
-                                editable="true" value=""/>
+                            <ComboBox id="defRoom"
+                                selectedKey="{view>/selectedRoom}"                                
+                                showSecondaryValues="true"
+                                selectionChange="onRoomChange"
+                                items="{
+                                    path: 'room>/'}">
+                                <core:ListItem 
+                                    key="{room>Raumn}"
+                                    text="{room>Stext}"
+                                    additionalText="{room>Raumn}"/>
+                            </ComboBox>
                         </f:content>
                     </f:SimpleForm>                                
                     <f:SimpleForm layout="ColumnLayout" editable="true">
