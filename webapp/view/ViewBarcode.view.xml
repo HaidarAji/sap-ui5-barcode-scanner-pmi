@@ -67,7 +67,7 @@
                         <f:content>
                             <core:Title text="Data"/>
                             <Label text="Number"/>
-                            <Input id="barcodeID" editable="false" value=""/>
+                            <Input id="barcodeID" editable="false" value="" maxLength="25"/>
                             <Label text="Asset Number"/>
                             <Input id="assetNo" editable="false" value="{header>/Anln1}"/>
                             <Label text="Asset Sub-Number"/>
@@ -110,10 +110,7 @@
                     <ToolbarSpacer/>
                     <Button text="Update"
                         type="Emphasized"
-                        press="onUpdatePress"/>
-                    <Button text="Close"
-                        type="Reject"
-                        press="onClosePress"/>   
+                        press="onUpdatePress"/>                      
                 </content>
             </Toolbar>
         </footer>

@@ -301,10 +301,6 @@ function (Controller, MessageToast, JSONModel) {
             }
              
           },
-        
-        onClosePress: function(oEvent) {
-            window.close();
-        },
 
         onScanError: function(oEvent) {
             MessageToast.show("Scan failed: " + oEvent, { duration:1000 });
@@ -415,8 +411,9 @@ function (Controller, MessageToast, JSONModel) {
             if (oScanButton) {
                 $(oScanButton.getDomRef()).on("click", function(){
                     oScanResultText.setText('');
+                    oScanButton.focus();                    
                 });
             }
-        }                   
+        }
     });
 })

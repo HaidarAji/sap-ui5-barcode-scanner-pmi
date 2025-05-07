@@ -21,6 +21,6 @@ builder:
           name: ZGXXS_SCAN_AIS
           description: Barcode Scan 1.2
           package: ZG00-ENH-FIN
-          transport: WCDK9F22ML
+          transport: WCDK9F25YB
         exclude:
           - /test/

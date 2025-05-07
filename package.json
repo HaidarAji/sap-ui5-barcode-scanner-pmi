@@ -9,8 +9,9 @@
   ],
   "main": "webapp/index.html",
   "devDependencies": {
-    "@ui5/cli": "^3.0.0",
     "@sap/ux-ui5-tooling": "1",
+    "@ui5/cli": "^3.0.0",
+    "nwabap-ui5uploader": "^1.2.0",
     "rimraf": "^5.0.5"
   },
   "scripts": {
