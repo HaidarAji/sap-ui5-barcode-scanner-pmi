@@ -61,9 +61,9 @@
                                         inputLiveUpdate="onScanLiveupdate"
                                         dialogTitle="Barcode Scanner Button" 
                                     />                                    
-                                </content>
+                                </content>                                
                             </Toolbar>
-                        </f:toolbar>
+                        </f:toolbar>                       
                         <f:content>
                             <core:Title text="Data"/>
                             <Label text="Number"/>
