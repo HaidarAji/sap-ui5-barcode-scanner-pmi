@@ -62,6 +62,13 @@ sap.ui.define([
                          this.getView().byId("barcodeID");
                      } */
                 this.oScanResultText = this.byId("barcodeID");
+
+                this._scanning = false;
+                this._barcode = "";
+
+                //Keyboard listener for Laser Scanner
+                this._onKeyDownHandler = this._onKeyDown.bind(this);
+                document.addEventListener("keydown", this._onKeyDownHandler);
             },
 
             fetchPlant: function () {
@@ -419,6 +426,32 @@ sap.ui.define([
             onScanLiveUpdate: function (oEvent) {
                 var partialScan = oEvent.getParameter("newValue");
                 this.oScanResultText.setValue(partialScan);
+            },
+
+            onLaserScanPress: function () {
+                this._scanning = true;
+                this._barcode = "";
+                MessageToast.show("Laser scanner ready...");
+            },
+
+            _onKeyDown: function (e) {
+                if (!this._scanning) return;
+
+                if (e.key === "Enter") {
+                    this._scanning = false;
+                    this._handleScanSuccess(this._barcode);
+                    this._barcode = "";
+                } else {
+                    this._barcode += e.key;
+                }
+            },
+
+            _handleScanSuccess: function (sResult) {
+                this.oScanResultText.setValue(sResult);
+            },
+
+            onExit: function () {
+                document.removeEventListener("keydown", this._onKeyDownHandler);
             }
         });
     })

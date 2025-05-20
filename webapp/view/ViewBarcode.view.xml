@@ -60,7 +60,11 @@
                                         scanFail="onScanError"
                                         inputLiveUpdate="onScanLiveupdate"
                                         dialogTitle="Barcode Scanner Button" 
-                                    />                                    
+                                    />    
+                                    <Button 
+                                        text="Laser Scan"
+                                        press="onLaserScanPress"
+                                        icon="sap-icon://barcode"/>                                
                                 </content>                                
                             </Toolbar>
                         </f:toolbar>                       
