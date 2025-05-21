@@ -67,9 +67,7 @@
                                         icon="sap-icon://barcode"/>   
                                     <Input 
                                         id="laserInput"
-                                        submit="onLaserInputSubmit"
-                                        valueLiveUpdate="false"
-                                        class="hiddenInput"/>                             
+                                        submit="onLaserInputSubmit"/>                             
                                 </content>                                
                             </Toolbar>
                         </f:toolbar>                       

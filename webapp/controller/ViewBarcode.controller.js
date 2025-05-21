@@ -30,7 +30,20 @@ sap.ui.define([
             onInit: function () {
                 console.log(document);
 
-                this.byId("laserInput").addStyleClass("hiddenInput");
+                const input = this.byId("laserInput");
+                input.addEventDelegate({
+                    onAfterRendering: function () {
+                        const dom = input.getDomRef();
+                        if (dom) {
+                            dom.style.opacity = "0";
+                            dom.style.position = "absolute";
+                            dom.style.zindex = "-1";
+                            dom.style.width = "1px";
+                            dom.style.height = "1px";
+                            dom.style.pointerEvents = "none";
+                        }
+                    }
+                });
 
                 //fetch Plant data on initialization
                 this.fetchPlant();
