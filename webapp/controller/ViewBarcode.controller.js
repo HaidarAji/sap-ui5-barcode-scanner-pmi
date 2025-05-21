@@ -30,6 +30,8 @@ sap.ui.define([
             onInit: function () {
                 console.log(document);
 
+                this.byId("laserInput").addStyleClass("hiddenInput");
+
                 //fetch Plant data on initialization
                 this.fetchPlant();
                 //fetch Location data on initialization
