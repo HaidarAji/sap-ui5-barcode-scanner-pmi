@@ -1,1 +1,9 @@
 /* Enter your custom styles here */
+.hiddenInput {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    height: 1px;
+    width: 1px;
+    pointer-events: none;
+}

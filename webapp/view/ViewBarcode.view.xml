@@ -63,8 +63,13 @@
                                     />    
                                     <Button 
                                         text="Laser Scan"
-                                        press="onLaserScanPress"
-                                        icon="sap-icon://barcode"/>                                
+                                        press="onFocusLaserInput"
+                                        icon="sap-icon://barcode"/>   
+                                    <Input 
+                                        id="laserInput"
+                                        submit="onLaserInputSubmit"
+                                        valueLiveUpdate="false"
+                                        class="hiddenInput"/>                             
                                 </content>                                
                             </Toolbar>
                         </f:toolbar>                       

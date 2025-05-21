@@ -47,28 +47,10 @@ sap.ui.define([
                 });
                 this.getView().setModel(oViewModel, "view");
 
-                /*prefixId = this.createId();
-                if (prefixId){
-                    prefixId =
-                        `${prefixId.split("ViewBarcode--")[0]}ViewBarcode--`;
-                } else {
-                    prefixId = "";
-                }
-                oScanResultText =
-                sap.ui.getCore().byId(`${prefixId}barcodeID`);
-                 if (oScanResultText === undefined)
-                     {
-                     oScanResultText =
-                         this.getView().byId("barcodeID");
-                     } */
-                this.oScanResultText = this.byId("barcodeID");
+                this._focusLaserInput();
 
-                this._scanning = false;
-                this._barcode = "";
-
-                //Keyboard listener for Laser Scanner
-                this._onKeyDownHandler = this._onKeyDown.bind(this);
-                document.addEventListener("keydown", this._onKeyDownHandler);
+                this.oScanResultText = this.byId("barcodeID");  
+                
             },
 
             fetchPlant: function () {
@@ -428,22 +410,34 @@ sap.ui.define([
                 this.oScanResultText.setValue(partialScan);
             },
 
-            onLaserScanPress: function () {
-                this._scanning = true;
-                this._barcode = "";
-                MessageToast.show("Laser scanner ready...");
+            _focusLaserInput: function () {
+                setTimeout(() => {
+                    const input = this.byId("laserInput");
+                    if (input && input.getDomRef()) {
+                        input.focus();
+                    }
+                }, 1000);
             },
+            
+            onFocusLaserInput: function () {
+                const input = this.byId("laserInput");
+                input.setValue("");         //clear previous scan
+                input.focus();
+                MessageToast.show("Ready laser scan");
+            },
+                       
+            onLaserInputSubmit: function (oEvent) {
+                const value = oEvent.getParameter("value");
 
-            _onKeyDown: function (e) {
-                if (!this._scanning) return;
-
-                if (e.key === "Enter") {
-                    this._scanning = false;
-                    this._handleScanSuccess(this._barcode);
-                    this._barcode = "";
+                if (value) {
+                    this._handleScanSuccess(value);
+                    this.byId("laserInput").setValue("");   //clear after scan
                 } else {
-                    this._barcode += e.key;
+                    MessageToast.show("Scan was empty");
                 }
+
+                //Refocus to allow continuous scanning
+                //this._focusLaserInput();
             },
 
             _handleScanSuccess: function (sResult) {
