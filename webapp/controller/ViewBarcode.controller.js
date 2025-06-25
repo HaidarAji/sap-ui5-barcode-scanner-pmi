@@ -435,9 +435,11 @@ sap.ui.define([
             },
             
             onFocusLaserInput: function () {
+                /**
                 const input = this.byId("laserInput");
                 input.setValue("");         //clear previous scan
-                input.focus();
+                input.focus(); */
+                this._focusLaserInput();
                 MessageToast.show("Ready laser scan");
             },
                        
