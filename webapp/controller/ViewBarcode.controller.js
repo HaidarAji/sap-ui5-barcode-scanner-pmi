@@ -35,11 +35,11 @@ sap.ui.define([
                     onAfterRendering: function () {
                         const dom = input.getDomRef();
                         if (dom) {
-                            dom.style.opacity = "0";
+                            dom.style.opacity = "100";
                             dom.style.position = "absolute";
-                            dom.style.zindex = "-1";
+                            dom.style.zindex = "50";
                             dom.style.width = "1px";
-                            dom.style.height = "1px";
+                            dom.style.height = "10px";
                             dom.style.pointerEvents = "none";
                         }
                     }
