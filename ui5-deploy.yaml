@@ -19,7 +19,7 @@ builder:
           client: '300'
         app:
           name: ZGXXS_SCAN_AIS
-          description: Barcode Scan 1.2
+          description: Barcode Scan 1.3
           package: ZG00-ENH-FIN
           transport: WCDK9F25YB
         exclude:
