@@ -35,7 +35,7 @@ sap.ui.define([
                     onAfterRendering: function () {
                         const dom = input.getDomRef();
                         if (dom) {
-                            dom.style.opacity = "100";
+                            dom.style.opacity = "0";
                             dom.style.position = "absolute";
                             dom.style.zindex = "50";
                             dom.style.width = "1px";
@@ -431,7 +431,7 @@ sap.ui.define([
                     if (input && input.getDomRef()) {
                         input.focus();
                     }
-                }, 1000);
+                }, 300);
             },
             
             onFocusLaserInput: function () {
@@ -452,13 +452,81 @@ sap.ui.define([
                 } else {
                     MessageToast.show("Scan was empty");
                 }
-
-                //Refocus to allow continuous scanning
-                //this._focusLaserInput();
             },
 
             _handleScanSuccess: function (sResult) {
                 this.oScanResultText.setValue(sResult);
+
+                if (sResult.length >= 18 && sResult.length <= 25) {
+                                        
+                    var idBarcode = this.getView().byId("barcodeID").getValue();
+
+                    var oView = this.getView();
+                    var oModel = this.getOwnerComponent().getModel("headerModel");
+                    var sPath = "/HeaderSet('" + idBarcode + "')";
+
+                    oModel.read(sPath, {
+                        success: function (oData) {
+                            // Create a JSONModel for header data
+                            var oHeader = new JSONModel(oData);
+
+                            // Bind the header data to the view
+                            oView.setModel(oHeader, "header");
+
+                            if (oData.Anln1 === "") {
+                                this.getView().byId("assetText").setText(oData.Message);
+
+                                var sInvalMsg = oBundle.getText("invalAsset");
+                                MessageToast.show(sInvalMsg);
+                            } else {
+                                //set oData to oDataGlobal
+                                oDataGlobal = oData;
+
+                                this.onCompare(oData);
+
+                                var sOkMsg = oBundle.getText("okAsset");
+                                MessageToast.show(sOkMsg);
+                            };
+
+                            //this.getView().setBusy(false);
+                        }.bind(this),
+
+                        Error: function (oError) {
+                            var sMessage;
+
+                            //check if responseText exists
+                            if (oError.responseText) {
+                                try {
+                                    // Parse the responseText to extract the message
+                                    var oResponse = JSON.parse(oError.responseText);
+                                    sMessage = oResponse.error.message.value;
+                                } catch (e) {
+                                    //Fallback to plain text if parsing fails
+                                    sMessage = oError.responseText;
+                                }
+                            } else {
+                                //Fallback if no responseText is present
+                                var sUnkErr = oBundle.getText("unkErr");
+                                sMessage = oError.message || sUnkErr;
+
+                            }
+                            //Display the error message
+                            MessageToast.show(sMessage);
+                            this.getView().byId("assetText").setText(sMessage);
+                            console.error("Error:", oError);
+                            //this.getView().setBusy(false);
+                        }
+                    });
+
+                } else {
+                    var oView = this.getView();
+                    var oHeader = new JSONModel();
+                    oView.setModel(oHeader, "header");
+                    this.getView().byId("assetText").setText("");
+
+                    var sErrBarLength = oBundle.getText("errBarLength");
+                    MessageToast.show(sErrBarLength);
+                }
             },
 
             onExit: function () {
