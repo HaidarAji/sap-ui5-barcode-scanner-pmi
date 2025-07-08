@@ -357,7 +357,7 @@ sap.ui.define([
 
             onPayload: function () {
                 var aDefLoc = this.getView().getModel("view").getProperty("/selectedLocation");
-                var aRoom = this.getView().byId("defRoom").getValue();
+                var aRoom = this.getView().byId("defRoom").getSelectedKey();
                 var aNote = this.getView().byId("invNote").getValue();
                 var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
 
@@ -458,7 +458,7 @@ sap.ui.define([
                 this.oScanResultText.setValue(sResult);
 
                 if (sResult.length >= 18 && sResult.length <= 25) {
-                                        
+
                     var idBarcode = this.getView().byId("barcodeID").getValue();
 
                     var oView = this.getView();
