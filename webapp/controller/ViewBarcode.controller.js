@@ -35,13 +35,13 @@ sap.ui.define([
                     onAfterRendering: function () {
                         const dom = input.getDomRef();
                         if (dom) {
-                            dom.style.opacity = "0";
+                            dom.style.opacity = "100";
                             dom.style.position = "absolute";
                             dom.style.zindex = "50";
                             dom.style.width = "1px";
                             dom.style.height = "10px";
                             dom.style.pointerEvents = "none";
-                        }
+                        }                       
                     }
                 });
 
@@ -441,6 +441,22 @@ sap.ui.define([
                 input.focus(); */
                 this._focusLaserInput();
                 MessageToast.show("Ready laser scan");
+            },
+
+            onBarcodeLiveChange: function (oEvent) {
+                const currentValue = oEvent.getParameter("value");
+                console.log("Live change: ", currentValue);
+
+                const oInput = oEvent.getSource();
+                oInput.attachBrowserEvent("keydown", function(oEvent) {
+                    if (oEvent.key === "Enter") {
+                        this._handleScanSuccess(currentValue);
+                    } else {
+                        if (oEvent.key === "Tab") {
+                            this._handleScanSuccess(currentValue);
+                        }
+                    }
+                }.bind(this));
             },
                        
             onLaserInputSubmit: function (oEvent) {

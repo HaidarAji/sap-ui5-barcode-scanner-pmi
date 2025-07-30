@@ -68,7 +68,10 @@
                                         icon="sap-icon://video"/>   
                                     <Input 
                                         id="laserInput"
-                                        submit="onLaserInputSubmit"/>                             
+                                        valueLiveUpdate="true"
+                                        liveChange="onBarcodeLiveChange"
+                                        submit="onLaserInputSubmit"/>
+                                                                     
                                 </content>                                
                             </Toolbar>
                         </f:toolbar>                       
