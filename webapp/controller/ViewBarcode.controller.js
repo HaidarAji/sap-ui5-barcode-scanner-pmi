@@ -35,7 +35,7 @@ sap.ui.define([
                     onAfterRendering: function () {
                         const dom = input.getDomRef();
                         if (dom) {
-                            dom.style.opacity = "100";
+                            dom.style.opacity = "0";
                             dom.style.position = "absolute";
                             dom.style.zindex = "50";
                             dom.style.width = "1px";
@@ -451,10 +451,6 @@ sap.ui.define([
                 oInput.attachBrowserEvent("keydown", function(oEvent) {
                     if (oEvent.key === "Enter") {
                         this._handleScanSuccess(currentValue);
-                    } else {
-                        if (oEvent.key === "Tab") {
-                            this._handleScanSuccess(currentValue);
-                        }
                     }
                 }.bind(this));
             },
