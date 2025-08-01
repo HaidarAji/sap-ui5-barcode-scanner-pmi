@@ -40,7 +40,7 @@
                             <ComboBox id="defRoom"
                                 selectedKey="{view>/selectedRoom}"                                
                                 showSecondaryValues="true"
-                                selectionChange="onRoomChange"
+                                selectionChange="onRoomChange"                                
                                 items="{
                                     path: 'room>/'}">
                                 <core:ListItem 

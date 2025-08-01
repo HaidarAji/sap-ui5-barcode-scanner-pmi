@@ -155,7 +155,7 @@ sap.ui.define([
             },
 
             fetchRoom: function () {
-                var oModel = this.getOwnerComponent().getModel("roomModel");
+                var oModel = this.getOwnerComponent().getModel("roomModel");                
                 var oView = this.getView();
                 var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
 
@@ -164,7 +164,8 @@ sap.ui.define([
                     success: function (oData) {
                         //Create eate JSON Model for the room data
                         var oRoomModel = new JSONModel(oData.results);
-
+                        oRoomModel.setSizeLimit(10000);
+                        
                         //Bind the room data to the combobox
                         oView.setModel(oRoomModel, "room");
                     },
